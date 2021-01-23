@@ -1,0 +1,83 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Potions{% endblock %}
+
+{% block main %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Potions</h1>
+            <hr>
+            <div class="potList">
+                <table
+                id = "table"
+                data-toggle="table"
+                data-filter-control="true"
+                data-show-search-clear-button="true"
+                class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th data-field="id" data-visible="false">ID</th>
+                            <th data-field="name" data-filter-control="input">Name</th>
+                            <th data-field="rarity" data-filter-control="select">Rarity</th>
+                            <th data-field="price" data-filter-control="select">Price</th>
+                            <th data-field="book" data-filter-control="select">Book</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myPots">
+                    {% for potion in potions %}
+                        <tr class="content">
+                            <td>{{ potion.id }}</td>
+                            <td>{{ potion.name }}</td>
+                            <td>{{ potion.rarity }}</td>
+                            <td>{{ potion.price }}</td>
+                            <td>{{ potion.book }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for potion in potions %}
+<!-- Modal -->
+    <div class="modal" id="potion{{ potion.id }}" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"> {{ potion.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Description</strong> {{ potion.description }}</p>
+                    <p><strong>Effect</strong> {{ potion.effect }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+$('#table').on('click-row.bs.table', function (row, $element, field) {
+    var id= $element.id;
+    console.log(id);
+    $('#' + 'potion' + id).modal('show');
+});
+</script>
+
+{% endblock %}

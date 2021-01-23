@@ -1,0 +1,36 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Paths{% endblock %}
+
+{% block main %}
+
+{% for data in ancData %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <p><h3><u>{{ data.anc_name }}</u></h3></p>
+            <p><strong>{{ data.attr1_name }}</strong> {{ data.attr1_desc }} {% if data.var1_name != '' %} <a data-toggle="collapse" href="#var1" role="button" aria-expanded="false" aria-controls="anc">Variant Rule</a> {% endif %}</p>
+            <div class="collapse" id="var1">
+                <p><strong>{{ data.var1_name }}</strong> {{ data.var1_desc }}</p>
+            </div>
+            <p><strong>{{ data.attr2_name }}</strong> {{ data.attr2_desc }}</p>
+            <p><strong>{{ data.attr3_name }}</strong> {{ data.attr3_desc }}</p>
+            <p><strong>{{ data.attr4_name }}</strong> {{ data.attr4_desc }}</p>
+            <p><strong>{{ data.attr5_name }}</strong> {{ data.attr5_desc }}</p>
+            <p><strong>{{ data.attr6_name }}</strong> {{ data.attr6_desc }}</p>
+            <p><strong>{{ data.attr7_name }}</strong> {{ data.attr7_desc }}</p>
+            <p><strong>{{ data.attr8_name }}</strong> {{ data.attr8_desc }}</p>
+            <p><strong>{{ data.attr9_name }}</strong> {{ data.attr9_desc }}</p>
+            <p><strong>{{ data.attr10_name }}</strong> {{ data.attr10_desc }}</p>
+            <p><strong>{{ data.attr11_name }}</strong> {{ data.attr11_desc }}</p>
+            <p><strong>{{ data.attr12_name }}</strong> {{ data.attr12_desc }}</p>
+            <p><small>{{ data.book }}</small></p>
+            <p><small>{{ data.varbook }}</small></p>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Spells{% endblock %}
+<p>UNDER CONSTRUCTION NO COMPLAINING</p>
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Spells</h1>
+            <hr>
+            <div class="potList">
+                <table
+                id = "table"
+                data-toggle="table"
+                data-filter-control="true"
+                data-show-search-clear-button="true"
+                class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th data-field="id" data-visible="false">ID</th>
+                            <th data-field="name" data-filter-control="input">Name</th>
+                            <th data-field="rarity" data-filter-control="select">Tradition</th>
+                            <th data-field="type" data-filter-control="select">Type</th>
+                            <th data-field="rank" data-filter-control="select" data-filter-strict-search="true">Rank</th>
+                            <th data-field="book" data-filter-control="select">Book</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myPots">
+                    {% for potion in potions %}
+                        <tr class="content">
+                            <td>{{ potion.id }}</td>
+                            <td>{{ potion.name }}</td>
+                            <td>{{ potion.tradtion }}</td>
+                            <td>{{ potion.type }}</td>
+                            <td>{{ potion.rank }}</td>
+                            <td>{{ potion.book }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+    <div class="modal" id="spellModal" role="dialog"></div>
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+
+
+$('#table').on('click-row.bs.table', function (row, $element, field) {
+    var id= $element.id;
+
+    $.get( "/modal/"+ id)
+        .done(function( response ) {
+            $("#spellModal").html(response);
+        });
+
+    $("#spellModal").modal('show');
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Paths{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Paths</h1>
+            <a class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" href="#anc" role="button" aria-expanded="false" aria-controls="anc">Ancestries</a>
+            <div class="collapse" id="anc">
+                <div class="card">
+                    <div class="card-body">
+                            {% for anc in ancestries %}
+                            <a href="/ancestry/{{ anc }}"><h5>{{ anc }}</h5></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            <br>
+
+            <a class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" href="#nov" role="button" aria-expanded="false" aria-controls="nov">Novice Paths</a>
+            <div class="collapse" id="nov">
+                <div class="card">
+                    <div class="card-body">
+                        {% for anc in novice %}
+                        <a href="/paths/{{ anc }}"><h5>{{ anc }}</h5></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <a class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" href="#exp" role="button" aria-expanded="false" aria-controls="exp">Expert Paths</a>
+            <div class="collapse" id="exp">
+                <div class="card">
+                    <div class="card-body">
+                        {% for anc in expert %}
+                        <a href="/paths/{{ anc }}"><h5>{{ anc }}</h5></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <a class="btn btn-secondary btn-lg btn-block" data-toggle="collapse" href="#mas" role="button" aria-expanded="false" aria-controls="mas">Master Paths</a>
+            <div class="collapse" id="mas">
+                <div class="card">
+                    <div class="card-body">
+                        {% for anc in master %}
+                        <a href="/paths/{{ anc }}"><h5>{{ anc }}</h5></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

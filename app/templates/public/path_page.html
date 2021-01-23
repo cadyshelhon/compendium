@@ -1,0 +1,30 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Paths{% endblock %}
+
+{% block main %}
+
+{% for data in pathData %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <p><h3><u>{{ data.path_title }}</u></h3></p>
+            <p><strong>{{ data.attr1_name }}</strong> {{ data.attr1_desc }}</p>
+            <p><strong>{{ data.attr2_name }}</strong> {{ data.attr2_desc }}</p>
+            <p><strong>{{ data.attr3_name }}</strong> {{ data.attr3_desc }}</p>
+            <p><strong>{{ data.attr4_name }}</strong> {{ data.attr4_desc }}</p>
+            <p><strong>{{ data.attr5_name }}</strong> {{ data.attr5_desc }}</p>
+            <p><strong>{{ data.attr6_name }}</strong> {{ data.attr6_desc }}</p>
+            <p><strong>{{ data.attr7_name }}</strong> {{ data.attr7_desc }}</p>
+            <p><strong>{{ data.attr8_name }}</strong> {{ data.attr8_desc }}</p>
+            <p><strong>{{ data.attr9_name }}</strong> {{ data.attr9_desc }}</p>
+            <p><strong>{{ data.attr10_name }}</strong> {{ data.attr10_desc }}</p>
+            <p><small>Source Book: {{ data.book }}</small></p>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}
